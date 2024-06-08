@@ -1,0 +1,572 @@
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local clipflipver = "Beta 1"
+local buildtype = "| By Clipflip"
+local lplayer = game.Players.LocalPlayer
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+enablenilinstances()
+
+local Window = Fluent:CreateWindow({ Title = "Solara Hub " .. clipflipver, SubTitle = buildtype, TabWidth = 160, Size = UDim2.fromOffset(580, 460), Acrylic = false, Theme = "Dark", MinimizeKey = D})
+
+local Tabs = {
+    Home = Window:AddTab({ Title = "Home", Icon = "home" }),
+    Admin = Window:AddTab({ Title = "Admin", Icon = "terminal" }),
+    UsefulTools = Window:AddTab({ Title = "Useful Tools", Icon = "hammer"}),
+    Game = Window:AddTab({ Title = "Games", Icon = "gamepad" }),
+    Univ = Window:AddTab({ Title = "Misc Universal", Icon = "globe" }),
+    Chat = Window:AddTab({ Title = "Chat", Icon = "message-circle" }),
+    Aim = Window:AddTab({ Title = "Combat", Icon = "crosshair" }),
+    Qol = Window:AddTab({ Title = "Quality of life", Icon = "list-plus" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
+    Log = Window:AddTab({ Title = "Changelog", Icon = "file-clock" }),
+    About = Window:AddTab({ Title = "About", Icon = "info" })
+}
+
+local Options = Fluent.Options
+
+do
+Tabs.Home:AddParagraph({
+        Title = "Welcome to Solara Hub ".. clipflipver.. ".",
+        Content = "Enjoy your stay!"
+    })
+Tabs.Home:AddParagraph({
+        Title = "Your username is ".. lplayer.Name.. ".",
+        Content = "User ID is ".. lplayer.UserId.. "."
+    })
+Tabs.Home:AddParagraph({
+        Title = "You are playing "..gameName.. ".",
+        Content = "Game ID is "..game.PlaceId.."."
+    })
+
+    Tabs.Univ:AddButton({
+        Title = "CLOVR",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute CLOVR.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/vr.lua"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.Aim:AddButton({
+        Title = "Owl Hub",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Owl Hub.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                             loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.UsefulTools:AddButton({
+        Title = "Copy the game's ID to clipboard",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will copy the game's ID to clipboard.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            setclipboard(game.PlaceId)
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.UsefulTools:AddButton({
+        Title = "Download Game",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will download the game file.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            saveinstance()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.Qol:AddButton({
+        Title = "Sirius",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Sirius.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLTD/sirius/request/source.lua"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.Univ:AddButton({
+        Title = "System Hub",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute System Hub.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet('https://raw.githubusercontent.com/AHMEDPLPL/System-hub/main/System%20hub%20V2', true))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.Game:AddButton({
+        Title = "Arsenal",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Thunder Client.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/ThunderScriptSolutions/ThunderClientForSolara/main/ThunderClientForSolara"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+           Tabs.Game:AddButton({
+        Title = "The Strongest Battlegrounds",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Badware.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/sandwichk/RobloxScripts/main/Scripts/BadWare/Hub/10449761463.lua"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+               Tabs.Game:AddButton({
+        Title = "CounterBlox",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Badware.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/fliskScript/jaran.vip/main/free.lua"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+            Tabs.Game:AddButton({
+        Title = "Bee Swarm Simulator",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Historia Hub.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/Historia00012/HISTORIAHUB/main/BSS%20FREE"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+            Tabs.Game:AddButton({
+        Title = "Tower of Hell",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Starry.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://github.com/hello-n-bye/starry/blob/main/main.lua/?raw=true", true))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+                Tabs.Game:AddButton({
+        Title = "Break in 2",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Starry.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://github.com/hello-n-bye/starry/blob/main/main.lua/?raw=true", true))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+    Tabs.Game:AddButton({
+        Title = "Kohls Admin House NBC",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute CMD-V3.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/quivings/KAH/main/CMD%20v3.lua"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.Admin:AddButton({
+        Title = "Infinite Yield",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Infinite Yield.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.Univ:AddButton({
+        Title = "Animation Logger",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Animation Logger.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Animation-Logger-13175"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+    Tabs.Aim:AddButton({
+        Title = "Reaper Hub",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Reaper Hub.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/AyoReaper/Reaper-Hub/main/loader.lua"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+    Tabs.Chat:AddButton({
+        Title = "Emoji Chat",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Emoji Chat.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGetAsync'https://raw.githubusercontent.com/Exunys/Emoji-Chat/main/Resources/Main.lua')''
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+    Tabs.Admin:AddButton({
+        Title = "Infinite Yield Reborn",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Infinite Yield Reborn.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://github.com/fuckusfm/infiniteyield-reborn/raw/master/source"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+    Tabs.Univ:AddButton({
+        Title = "DEX Explorer",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute DEX Explorer.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+       Tabs.Admin:AddButton({
+        Title = "Nameless Admin",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Nameless Admin.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+       Tabs.Aim:AddButton({
+        Title = "Unnamed ESP",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute Unnamed ESP.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet('https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua'))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+     Tabs.Chat:AddButton({
+        Title = "No Logging",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "Information",
+                Content = "This will execute NoLogging.",
+                Buttons = {
+                    {
+                        Title = "Okay",
+                        Callback = function()
+                            loadstring(game:HttpGet('https://rawscripts.net/raw/Universal-Script-NoLogging-13339'))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+        Tabs.About:AddParagraph({
+        Title = "You are using Solara Hub ".. buildtype,
+        Content = clipflipver.. " - ".. identifyexecutor()
+    })
+        Tabs.About:AddParagraph({
+        Title = "Made by Clipflip",
+        Content = "Join https://discord.gg/xA48xCjWXk"
+    })
+end
+
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({})
+InterfaceManager:SetFolder("ClipfipScripts")
+SaveManager:SetFolder("ClipfipScripts/SolaraHub")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
+
+
+Window:SelectTab(1)
+
+Fluent:Notify({ Title = "Solara Hub", Content = "The script has loaded successfully.",Duration = 8 })
+SaveManager:LoadAutoloadConfig()
